@@ -25,7 +25,7 @@ export function actualizarResumen(){
     document.getElementById('resumen-total-ventas').textContent = `$${ventasAcumuladas}`;
     document.getElementById('resumen-total-efectivo').textContent = `$${ventasEfectivoAcumuladas}`;
     document.getElementById('resumen-total-transferencias').textContent = `$${ventasTransferenciasAcumuladas}`;
-    document.getElementById('resumen-total-credito').textContent = `$${ventasCreditosAcumuladas}`;
+    document.getElementById('resumen-total-creditos').textContent = `$${ventasCreditosAcumuladas}`;
     document.getElementById('resumen-total-gastos').textContent =`$${gastosAcumulados}`;
     document.getElementById('resumen-total-entregas').textContent = `$${entregasAcumuladas}`;
     document.getElementById('resumen-saldo-final').textContent = `$${saldoFinal.toLocaleString('es-CO')}`

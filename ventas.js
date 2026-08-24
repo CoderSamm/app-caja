@@ -34,7 +34,7 @@ const tablaTotalVentas = document.getElementById('tabla-total-ventas');
 const totalVentas = document.getElementById('resumen-total-ventas');
 const totalEfectivo = document.getElementById('resumen-total-efectivo');
 const totalTransferencia = document.getElementById('resumen-total-transferencias');
-const totalCreditos = document.getElementById('resumen-total-credito');
+const totalCreditos = document.getElementById('resumen-total-creditos');
 
 //boton-agregar-venta
 const botonAgregarVenta = document.getElementById('btn-agregar-venta');
