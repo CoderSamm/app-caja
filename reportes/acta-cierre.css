@@ -1,0 +1,276 @@
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   DOCUMENTO
+========================== */
+
+/* body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    padding: 20mm;
+    font-size: 12px;
+    line-height: 1.5;
+} */
+body{
+    background:#dfe3e8;
+    padding:30px;
+    display:flex;
+    justify-content:center;
+}
+
+.hoja{
+
+    width:900px;
+    min-height:1200px;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+}
+
+.hoja{
+    width: 900px;
+    min-height: 1200px;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);;
+}
+
+/* IMPRIMIR */
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .hoja{
+        width:100%;
+        min-height:auto;
+        padding:0;
+        margin:0;
+        box-shadow:none;
+        border-radius:0;
+    }
+
+}
+/* ==========================
+   ENCABEZADO
+========================== */
+
+header {
+    text-align: center;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+header p {
+    margin: 5px 0;
+}
+
+/* ==========================
+   SECCIONES
+========================== */
+
+section {
+    margin-bottom: 25px;
+}
+
+section h2 {
+    background: #f3f4f6;
+    color: #111827;
+    border-left: 5px solid #2563eb;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* ==========================
+   DATOS GENERALES
+========================== */
+
+.datos-apertura p,
+.datos-cierre p {
+    margin-bottom: 10px;
+}
+
+.datos-apertura span,
+.datos-cierre span {
+    font-weight: 600;
+}
+
+/* ==========================
+   TABLAS
+========================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: #e5e7eb;
+}
+
+th {
+    border: 1px solid #cbd5e1;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+td {
+    border: 1px solid #cbd5e1;
+    padding: 8px;
+    font-size: 11px;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tbody tr:hover {
+    background: #f3f4f6;
+}
+
+/* ==========================
+   VALORES MONETARIOS
+========================== */
+
+.moneda {
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================
+   RESUMEN GENERAL
+========================== */
+
+.resumen {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.resumen p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.resumen p:last-child {
+    border-bottom: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.resumen strong {
+    font-size: 13px;
+}
+
+/* ==========================
+   OBSERVACIONES
+========================== */
+
+#acta-observaciones {
+    display: block;
+    margin-top: 10px;
+    border: 1px solid #d1d5db;
+    min-height: 100px;
+    padding: 12px;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+/* ==========================
+   FIRMAS
+========================== */
+
+.firmas {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.linea-firma {
+    flex: 1;
+    text-align: center;
+}
+
+.linea-firma p:first-child {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.linea-firma p:last-child {
+    font-weight: 600;
+}
+
+/* ==========================
+   IMPRESIÓN
+========================== */
+
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+
+    body {
+        padding: 0;
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    header {
+        page-break-after: avoid;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    .firmas {
+        page-break-inside: avoid;
+    }
+}

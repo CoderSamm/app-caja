@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIERRE DE CAJA</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+            <h1> Cierre de Caja
+                <!-- <span id="consecutivo">0000</span>  -->
+            </h1>
+    </header>
+
+    <section class="apertura">
+
+        <h2>Apertura</h2>
+
+        <div class="form-grid">
+            <label>Fecha</label>
+            <input type="date" name="fecha" id="fecha">
+            
+            <label>Responsable de Apertura</label>
+            <input type="text" name="nombre-responsable" id="nombre-responsable">
+
+            <label>Saldo Inicial (COP)</label>
+            <input type="number" name="saldoInicial" id="input-saldo-inicial">
+        </div>
+    </section>
+
+    <section class="ventas">
+        <h2> Ventas </h2>
+
+
+        <!-- FORMULARIO -->
+
+        <div class="form-grid">
+            <label for="input-remision">Consecutivo remision</label>
+            <input type="text" name="input-remision" id="input-remision">
+        
+            <label for="input-detalle">Detalle</label>
+            <input type="text" name="input-detalle" id="input-detalle">
+        
+            <label for="input-total-remision">Total Remision</label>
+            <input type="number" name="input-total-remision" id="input-total-remision" placeholder="total remision">
+        
+            <label for="forma-pago">Forma de Pago:</label>
+            <select name="forma-pago" id="forma-pago">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Credito">Credito</option>
+            </select>
+        
+            <label for="input-cliente">Cliente</label>
+            <input type="text" name="input-cliente" id="input-cliente" placeholder="cliente">
+        
+            <button id="btn-agregar-venta">Agregar Venta</button>
+        </div>
+
+        <!-- TABLA -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Consecutivo remision</th>
+                    <th>Detalle</th>
+                    <th>Valor total</th>
+                    <th>Forma de Pago</th>
+                    <th>Cliente</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            
+           
+            <tbody id="tbody-ventas">
+                <!-- cuerpo de las ventas, acá se crearan los elementos en js  -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Total Ventas</td> 
+                    <td id="tabla-total-ventas">$0</td> 
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+
+
+    <section class="gastos">
+        <h2> Gastos </h2>
+
+        <!-- FORMULARIO -->
+            <div class="form-grid">
+                <label for="input-gasto-numero">Consecutivo Gasto</label>
+               <input type="text" name="input-gasto-numero" id="input-gasto-numero" >
+
+               <label for="input-detalle-gasto">Detalle del Gasto</label>
+               <input type="text" name="input-detalle-gasto" id="input-detalle-gasto">
+
+               <label for="input-total-gasto">Total Gasto</label>
+               <input type="number" name="input-total-gasto" id="input-total-gasto" placeholder="total gasto">
+               
+               <label for="forma-pago-gasto">Forma de Pago del Gasto:</label>
+                <select name="forma-pago-gasto" id="forma-pago-gasto">
+                <option value="Efectivo">Efectivo</option>
+                </select>
+
+                <label for="input-proveedor">Proveedor</label>
+               <input type="text" name="input-proveedor" id="input-proveedor" placeholder="proveedor">
+
+                <label for="input-nombre-receptor">Entregado a</label>
+               <input type="text" name="input-nombre-receptor" id="input-nombre-receptor" placeholder="recibe">
+
+                <button id="btn-agregar-gasto">Agregar Gasto</button>
+            </div>
+
+
+
+        <!-- TABLA -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Consecutivo</th>
+                    <th>Detalle</th>
+                    <th>valor</th>
+                    <th>Forma de pago del gasto</th>
+                    <th>Proveedor</th>
+                    <th>Entregado a</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+
+            <tbody id="tbody-gastos">
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4">Total Gastos</td>
+                    <td id="tabla-total-gastos">$0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <section class="entregas-caja">
+        <h2> Entregas de caja  </h2>
+
+
+        <!-- FORMULARIO -->
+            <div class="form-grid">
+                <label for="input-entrega-numero">Consecutivo de la Entrega</label>
+               <input type="text" name="input-entrega-numero" id="input-entrega-numero">
+
+               <label for="input-detalle-entrega">Detalle de la entrega</label>
+               <input type="text" name="input-detalle-entrega" id="input-detalle-entrega">
+
+               <label for="input-total-entrega">Total entregado</label>
+               <input type="number" name="input-total-entrega" id="input-total-entrega" placeholder="total entrega">
+               
+                <label for="input-aprobador">Aprobador</label>
+               <input type="text" name="input-aprobador" id="input-aprobador" placeholder="aprobador">
+
+                <label for="input-receptor">Receptor</label>
+               <input type="text" name="input-receptor" id="input-receptor" placeholder="recibe">
+
+                <label for="input-hora-entrega">Hora de la entrega</label>
+               <input type="time" name="input-hora-entrega" id="input-hora-entrega" placeholder="hora de entrega">
+
+                <button id="btn-agregar-entrega">Agregar Entrega</button>
+            </div>
+
+
+
+
+        <!-- TABLA -->    
+        <table>
+            <thead>
+                <tr>
+                    <th>Numero de entrega</th>
+                    <th>Detalle de entrega</th>
+                    <th>Total Entregado</th>
+                    <th>Aprueba</th>
+                    <th>Recibe</th>
+                    <th>Hora de entrega</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+             
+
+            <tbody id="tbody-entregas">
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total entregado</td>
+                    <td id="tabla-total-entregas">$0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+    
+    <footer>
+    
+    <!-- <section class="resumen">
+        <p>
+            Saldo Inicial:
+            <span id="resumen-saldo-inicial">$0</span>
+        </p>
+        <p>
+            Ventas Totales:
+            <span id="resumen-total-ventas">$0</span>
+        </p>
+
+        <p>
+            Ventas Totales en Efectivo:
+            <span id="resumen-total-efectivo">$0</span>
+        </p>
+        <p>
+            Ventas Totales en Transferencias:
+            <span id="resumen-total-transferencias">$0</span>
+        </p>
+
+        <p>
+            Ventas A Credito:
+            <span id="resumen-total-credito">$0</span>
+        </p>
+
+        
+        <p>
+            Gastos Totales:
+            <span id="resumen-total-gastos">$0</span>
+        </p>
+
+        <p>
+            Entregas de Caja:
+            <span id="resumen-total-entregas">$0</span>
+        </p>
+        <p>
+            Saldo Final:
+            <span id="resumen-saldo-final">$0</span>
+        </p>
+    </section> -->
+    
+
+    <section class="resumen">
+    
+        <div class="resumen-item">
+            <h3>Saldo Inicial</h3>
+            <p id="resumen-saldo-inicial">$0</p>
+        </div>
+    
+        <div class="resumen-item">
+            <h3>Total Ventas</h3>
+            <p id="resumen-total-ventas">$0</p>
+        </div>
+    
+        <div class="resumen-item">
+            <h3>Total Gastos</h3>
+            <p id="resumen-total-gastos">$0</p>
+        </div>
+    
+        <div class="resumen-item saldo-final">
+            <h3>Saldo Final</h3>
+            <p id="resumen-saldo-final">$0</p>
+        </div>
+    
+    </section>
+    <section class="cierre">
+
+        <h2>Cierre</h2>
+
+        <div class="form-grid">
+            <label>Responsable de Cierre</label>
+            <input type="text" name="responsable-cierre" id="responsable-cierre">
+            <label>Observaciones</label>
+            <input type="text" name="observaciones" id="observaciones">
+        </div>
+    </section>
+
+
+    <button id="btn-generar-acta">
+        Generar Acta
+    </button>
+
+    </footer>
+</body>
+<!-- <script src="script.js"></script> -->
+<script type = "module" src="ventas.js"></script>
+<script type = "module" src="gastos.js"></script>
+<script type = "module" src="entregas.js"></script>
+<script type = "module" src="resumen.js"></script>
+<script  type ="module" src="generar-acta.js"></script>
+</html>

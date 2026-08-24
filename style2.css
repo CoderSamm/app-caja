@@ -1,0 +1,223 @@
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1e40af;
+    --success:#16a34a;
+    --danger:#dc2626;
+
+    --bg:#f8fafc;
+    --card:#ffffff;
+
+    --text:#1e293b;
+    --border:#e2e8f0;
+
+    --shadow:
+        0 4px 6px rgba(0,0,0,.05),
+        0 10px 15px rgba(0,0,0,.05);
+}
+
+body{
+    font-family: "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding:20px;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+header{
+    background:var(--primary);
+    color:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+}
+
+header h1{
+    font-size:2rem;
+}
+
+/* ==========================================
+   SECCIONES
+========================================== */
+
+section{
+    background:var(--card);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+}
+
+section h2{
+    margin-bottom:15px;
+    color:var(--primary-dark);
+}
+
+/* ==========================================
+   FORM GRID
+========================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+label{
+    font-weight:600;
+}
+
+input,
+select,
+button{
+    width:100%;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-size:14px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+button{
+    cursor:pointer;
+    border:none;
+    transition:.2s;
+    font-weight:600;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+#btn-agregar-venta,
+#btn-agregar-gasto,
+#btn-agregar-entrega,
+#btn-generar-acta{
+    background:var(--primary);
+    color:white;
+}
+
+#btn-generar-acta{
+    padding:15px;
+    font-size:16px;
+}
+
+/* ==========================================
+   TABLAS
+========================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    background:white;
+}
+
+th{
+    background:var(--primary);
+    color:white;
+}
+
+th,
+td{
+    padding:12px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+}
+
+tr:hover{
+    background:#f1f5f9;
+}
+
+/* ==========================================
+   TOTALES
+========================================== */
+
+.total-box{
+    margin-top:15px;
+    text-align:right;
+    font-size:18px;
+    font-weight:bold;
+    color:var(--primary-dark);
+}
+
+/* ==========================================
+   RESUMEN
+========================================== */
+
+.resumen{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.resumen-item{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+
+.resumen-item h3{
+    font-size:14px;
+    color:#64748b;
+}
+
+.resumen-item p{
+    margin-top:10px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.saldo-final{
+    background:var(--success);
+    color:white;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    body{
+        padding:10px;
+    }
+
+    header h1{
+        font-size:1.5rem;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+}

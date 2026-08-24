@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTA DE CIERRE DE CAJA</title>
+    <link rel="stylesheet" href="acta-cierre.css">
+</head>
+<body>
+
+    <div class="hoja">
+            <header>
+                <h1>CIERRE DE CAJA</h1>
+                <p>Consecutivo:<span id="acta-consecutivo"></span></p>
+                <p>Fecha: <span id="acta-fecha"></span></p>
+            </header>
+            
+            <section class="datos-apertura">
+                <h2>Datos de Apertura</h2>
+            
+                <p>
+                    Responsable de Apertura:
+                    <span id="acta-responsable-apertura"></span>
+                </p>
+            
+                <p>
+                    Saldo Inicial:
+                    <span id="acta-saldo-inicial"></span>
+                </p>
+            </section>
+            
+            <section class="ventas">
+                <h2>Ventas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Remision</th>
+                            <th>Detalle</th>
+                            <th>Valor</th>
+                            <th>Forma de Pago</th>
+                            <th>Cliente</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody id="acta-ventas">
+            
+                    </tbody>
+                </table>
+            
+            </section>
+            
+            <section class="gastos">
+            
+                <h2>Gastos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Consecutivo de Gasto</th>
+                            <th>Detalle</th>
+                            <th>Valor</th>
+                            <th>Forma de Pago de Gasto</th>
+                            <th>Proveedor</th>
+                            <th>Entregado a</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody id="acta-gastos">
+            
+                    </tbody>
+                </table>
+            
+            </section>
+            
+            <section class="entregas">
+                <h2>Entregas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Numero</th>
+                            <th>Detalle</th>
+                            <th>Valor</th>
+                            <th>Aprueba</th>
+                            <th>Recibe</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody id="acta-entregas">
+            
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="resumen">
+                <h2>Resumen General</h2>
+            
+                <p>
+                    Ventas Totales:
+                    <strong id="acta-total-ventas"></strong>
+                </p>
+                <p>
+                    Ventas en Efectivo:
+                    <strong id="acta-total-efectivo"></strong>
+                </p>
+                <p>
+                    Ventas en Transferencias:
+                    <strong id="acta-total-transferencias"></strong>
+                </p>
+                <p>
+                    Ventas a Credito:
+                    <strong id="acta-total-credito"></strong>
+                </p>
+                <p>
+                    Gastos:
+                    <strong id="acta-total-gastos"></strong>
+                </p>
+                <p>
+                    Entregas:
+                    <strong id="acta-total-entregas"></strong>
+                </p>
+                <p>
+                    Saldo Final:
+                    <strong id="acta-saldo-final"></strong>
+                </p>
+            </section>
+            
+            <section class="datos-cierre">
+                <h2>Datos de Cierre</h2>
+            
+                <p>
+                    Responsable de Cierre:
+                    <span id="acta-responsable-cierre"></span>
+                </p>
+            
+                <p>
+                    Observaciones:
+                    <span id="acta-observaciones"></span>
+                </p>
+            </section>
+            
+            <br><br><br><br>
+            
+            
+            <section class="firmas">
+                <div class="linea-firma">
+                    <p>_______________________</p>
+                    <p>Responsable de Apertura</p>
+                </div>
+            
+                <div class="linea-firma">
+                    <p>_______________________</p>
+                    <p>Responsable de Cierre</p>
+                </div>
+            </section>
+
+            <section class="acciones-acta">
+                
+                <button id="btn-imprimir">
+                    🖨️ Imprimir
+                </button>
+                
+                <button id="btn-guardar-pdf">
+                    📄 Guardar PDF
+                </button>
+                
+            </section>
+
+    </div>
+
+
+</body>
+
+
+<script src="acta-cierre.js"></script>
+</html>
