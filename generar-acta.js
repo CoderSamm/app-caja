@@ -43,35 +43,23 @@ function generarActa() {
 
     console.log("PASO 1");
 
-    const consecutivo =
-        document.getElementById('consecutivo').textContent;
+    // const consecutivo = document.getElementById('consecutivo').textContent;
 
-    console.log("PASO 2", consecutivo);
+    // console.log("PASO 2", consecutivo);
 
-    const fecha =
-        document.getElementById('fecha').value;
-
+    const fecha = document.getElementById('fecha').value;
     console.log("PASO 3", fecha);
-
-    const responsableApertura =
-        document.getElementById('nombre-responsable').value;
-
+    const responsableApertura = document.getElementById('nombre-responsable').value;
     console.log("PASO 4", responsableApertura);
-
-    const responsableCierre =
-        document.getElementById('responsable-cierre').value;
-
+    const responsableCierre = document.getElementById('responsable-cierre').value;
     console.log("PASO 5", responsableCierre);
-
-    const observaciones =
-        document.getElementById('observaciones').value;
-
+    const observaciones =  document.getElementById('observaciones').value;
     console.log("PASO 6", observaciones);
 
 
     const cierreCaja = {
 
-        consecutivo,
+        // consecutivo,
         fecha,
 
         responsableApertura,
