@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="historial.html">Historial</a>
+        </div>
+    </nav>
+
     <header>
             <h1> Cierre de Caja
                 <!-- <span id="consecutivo">0000</span>  -->
             </h1>
     </header>
+
+    
+
 
     <section class="apertura">
 
@@ -262,17 +273,17 @@
         </div>
 
         <div class="resumen-item">
-            <h3>Total Ventas</h3>
+            <h3>Total Ventas en Efectivo</h3>
             <p id="resumen-total-efectivo">$0</p>
         </div>
     
         <div class="resumen-item">
-            <h3>Total Ventas</h3>
+            <h3>Total Ventas en Transferencias</h3>
             <p id="resumen-total-transferencias">$0</p>
         </div>
     
         <div class="resumen-item">
-            <h3>Total Ventas</h3>
+            <h3>Total Ventas a Credito</h3>
             <p id="resumen-total-creditos">$0</p>
         </div>
     
@@ -281,7 +292,7 @@
             <p id="resumen-total-gastos">$0</p>
         </div>
         <div class="resumen-item">
-            <h3>Total Gastos</h3>
+            <h3>Total Entregado</h3>
             <p id="resumen-total-entregas">$0</p>
         </div>
     
@@ -303,6 +314,9 @@
         </div>
     </section>
 
+    <button id="btn-guardar-cierre">
+        Guardar Cierre
+    </button>
 
     <button id="btn-generar-acta">
         Generar Acta
@@ -315,5 +329,7 @@
 <script type = "module" src="gastos.js"></script>
 <script type = "module" src="entregas.js"></script>
 <script type = "module" src="resumen.js"></script>
-<script  type ="module" src="generar-acta.js"></script>
+<script type = "module" src="guardar-cierre.js"></script>
+<script type = "module" src="generar-acta.js"></script>
+<script type = "module" src="cargar-cierre.js"></script>
 </html>
