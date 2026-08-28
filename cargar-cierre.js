@@ -64,6 +64,69 @@ document.addEventListener('DOMContentLoaded', ()=>{
             
             `
         })
+
+        //TOTALIZACIONES
+
+        const totalVentas = cierreSeleccionado.ventas.reduce(
+            (acumulado, venta) => acumulado + venta.totalRemision, 0
+        );
+
+        const totalGastos = cierreSeleccionado.gastos.reduce(
+            (acumulado, gasto) => acumulado + gasto.totalGasto, 0
+        );
+
+        const totalEntregas = cierreSeleccionado.entregas.reduce(
+            (acumulado, entrega) => acumulado + entrega.totalEntrega, 0
+        );
+
+        console.log(totalVentas);
+        console.log(totalGastos);
+        console.log(totalEntregas);
+
+        //TOTALIZACIONES DE VENTAS EN EFECTIVO,VENTAS POR TRANSFERENCIAS Y VENTAS A CRÉDITO
+
+        const totalVentasEfectivo = cierreSeleccionado.ventas.filter(
+            venta => venta.formaPago === 'Efectivo'
+        ).reduce(
+            (acumulado, venta) => acumulado + venta.totalRemision,
+            0
+        );
+
+        const totalVentasTransferencias = cierreSeleccionado.ventas.filter(
+            venta => venta.formaPago === 'Transferencias'
+        ).reduce(
+            (acumulado, venta) => acumulado + venta.totalRemision,
+            0
+        );
+
+        const totalVentasCredito = cierreSeleccionado.ventas.filter(
+            venta => venta.formaPago === 'Credito'
+        ).reduce(
+            (acumulado, venta) => acumulado + venta.totalRemision,
+            0
+        );
+
+        //SALDO FINAL
+
+        const saldoFinal = cierreSeleccionado.saldoInicial + 
+        totalVentasEfectivo - 
+        totalGastos - 
+        totalEntregas
+
+        //Mostrar los resultados
+        document.getElementById('resumen-saldo-inicial').textContent = `$${cierreSeleccionado.saldoInicial.toLocaleString('es-CO')}`
+        document.getElementById('resumen-total-ventas').textContent = `$${totalVentas.toLocaleString('es-CO')}`
+        document.getElementById('resumen-total-efectivo').textContent = `$${totalVentasEfectivo.toLocaleString('es-CO')}`
+        document.getElementById('resumen-total-transferencias').textContent = `$${totalVentasTransferencias.toLocaleString('es-CO')}`
+        document.getElementById('resumen-total-creditos').textContent = `$${totalVentasCredito.toLocaleString('es-CO')}`
+
+        document.getElementById('resumen-total-gastos').textContent = `$${totalGastos.toLocaleString('es-CO')}`
+        document.getElementById('resumen-total-entregas').textContent = `$${totalEntregas.toLocaleString('es-CO')}`
+
+        document.getElementById('resumen-saldo-final').textContent = `$${saldoFinal.toLocaleString('es-CO')}`
+
     }
+
+ 
 })
 

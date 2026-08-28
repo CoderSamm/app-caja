@@ -1,1 +1,3 @@
-imprimir saldo inicial
+agregar totales de ventas gastos y entrega en el archivo de cargar cierre
+habilitar nuevamente el boton de acciones por si necesitan modificar 
+crear una alerta cuando se guarde de manera exitosa los datos
