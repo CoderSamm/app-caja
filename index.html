@@ -29,48 +29,46 @@
         <h2>Apertura</h2>
 
         <div class="form-grid">
-            <label>Fecha</label>
-            <input type="date" name="fecha" id="fecha">
-            
-            <label>Responsable de Apertura</label>
-            <input type="text" name="nombre-responsable" id="nombre-responsable">
 
-            <label>Saldo Inicial (COP)</label>
-            <input type="number" name="saldoInicial" id="input-saldo-inicial">
+            <label for="fecha">Fecha
+                <input type="date" name="fecha" id="fecha">
+            </label>
+            
+            <input type="text" name="nombre-responsable" id="nombre-responsable" placeholder="Realiza apertura (nombre)">
+
+
+            <input type="number" name="saldoInicial" id="input-saldo-inicial" placeholder="Saldo Inicial (COP)">
         </div>
     </section>
 
     <section class="ventas">
         <h2> Ventas </h2>
-
-
         <!-- FORMULARIO -->
 
         <div class="form-grid">
-            <label for="input-remision">Consecutivo remision</label>
-            <input type="text" name="input-remision" id="input-remision">
+
+            <input type="text" name="input-remision" id="input-remision" placeholder="Consecutivo">
         
-            <label for="input-detalle">Detalle</label>
-            <input type="text" name="input-detalle" id="input-detalle">
+            <input type="text" name="input-detalle" id="input-detalle" placeholder="Detalle">
         
-            <label for="input-total-remision">Total Remision</label>
-            <input type="number" name="input-total-remision" id="input-total-remision" placeholder="total remision">
+            <input type="number" name="input-total-remision" id="input-total-remision" placeholder="Total">
         
-            <label for="forma-pago">Forma de Pago:</label>
+            
+
             <select name="forma-pago" id="forma-pago">
+                <option value="" disabled selected>Seleccione la forma de pago</option>
                 <option value="Efectivo">Efectivo</option>
                 <option value="Transferencia">Transferencia</option>
                 <option value="Credito">Credito</option>
             </select>
+    
         
-            <label for="input-cliente">Cliente</label>
-            <input type="text" name="input-cliente" id="input-cliente" placeholder="cliente">
+            <input type="text" name="input-cliente" id="input-cliente" placeholder="Cliente">
         
             <button id="btn-agregar-venta">Agregar Venta</button>
         </div>
 
         <!-- TABLA -->
-
         <table>
             <thead>
                 <tr>
@@ -83,8 +81,6 @@
                 </tr>
             </thead>
 
-            
-           
             <tbody id="tbody-ventas">
                 <!-- cuerpo de las ventas, acá se crearan los elementos en js  -->
             </tbody>
@@ -104,26 +100,20 @@
 
         <!-- FORMULARIO -->
             <div class="form-grid">
-                <label for="input-gasto-numero">Consecutivo Gasto</label>
-               <input type="text" name="input-gasto-numero" id="input-gasto-numero" >
-
-               <label for="input-detalle-gasto">Detalle del Gasto</label>
-               <input type="text" name="input-detalle-gasto" id="input-detalle-gasto">
-
-               <label for="input-total-gasto">Total Gasto</label>
-               <input type="number" name="input-total-gasto" id="input-total-gasto" placeholder="total gasto">
-               
-               <label for="forma-pago-gasto">Forma de Pago del Gasto:</label>
+            
+                <input type="text" name="input-gasto-numero" id="input-gasto-numero" placeholder="Consecutivo">
+            
+                <input type="text" name="input-detalle-gasto" id="input-detalle-gasto" placeholder="Detalle">
+            
+                <input type="number" name="input-total-gasto" id="input-total-gasto" placeholder="Total gasto">
+            
                 <select name="forma-pago-gasto" id="forma-pago-gasto">
-                <option value="Efectivo">Efectivo</option>
+                    <option value="" disabled selected>Seleccione la forma de pago</option>
+                    <option value="Efectivo">Efectivo</option>
                 </select>
-
-                <label for="input-proveedor">Proveedor</label>
-               <input type="text" name="input-proveedor" id="input-proveedor" placeholder="proveedor">
-
-                <label for="input-nombre-receptor">Entregado a</label>
-               <input type="text" name="input-nombre-receptor" id="input-nombre-receptor" placeholder="recibe">
-
+            
+                <input type="text" name="input-proveedor" id="input-proveedor" placeholder="Proveedor">
+                <input type="text" name="input-nombre-receptor" id="input-nombre-receptor" placeholder="Recibe">
                 <button id="btn-agregar-gasto">Agregar Gasto</button>
             </div>
 
@@ -164,26 +154,27 @@
 
         <!-- FORMULARIO -->
             <div class="form-grid">
-                <label for="input-entrega-numero">Consecutivo de la Entrega</label>
-               <input type="text" name="input-entrega-numero" id="input-entrega-numero">
-
-               <label for="input-detalle-entrega">Detalle de la entrega</label>
-               <input type="text" name="input-detalle-entrega" id="input-detalle-entrega">
-
-               <label for="input-total-entrega">Total entregado</label>
-               <input type="number" name="input-total-entrega" id="input-total-entrega" placeholder="total entrega">
-               
-                <label for="input-aprobador">Aprobador</label>
-               <input type="text" name="input-aprobador" id="input-aprobador" placeholder="aprobador">
-
-                <label for="input-receptor">Receptor</label>
-               <input type="text" name="input-receptor" id="input-receptor" placeholder="recibe">
-
-                <label for="input-hora-entrega">Hora de la entrega</label>
-               <input type="time" name="input-hora-entrega" id="input-hora-entrega" placeholder="hora de entrega">
+            
+                <input type="text" name="input-entrega-numero" id="input-entrega-numero" placeholder="Consecutivo">
+            
+                <input type="text" name="input-detalle-entrega" id="input-detalle-entrega" placeholder="Detalle">
+            
+                <input type="number" name="input-total-entrega" id="input-total-entrega" placeholder="Total entregado">
+            
+                <input type="text" name="input-aprobador" id="input-aprobador" placeholder="Aprobador">
+            
+                <input type="text" name="input-receptor" id="input-receptor" placeholder="Recibe">
+            
+                <label for="input-hora-entrega">Hora de entrega
+                    <input type="time" name="input-hora-entrega" id="input-hora-entrega" placeholder="Hora de entrega">
+                </label>
 
                 <button id="btn-agregar-entrega">Agregar Entrega</button>
+            
+              
             </div>
+
+        
 
 
 
@@ -219,45 +210,7 @@
     
     <footer>
     
-    <!-- <section class="resumen">
-        <p>
-            Saldo Inicial:
-            <span id="resumen-saldo-inicial">$0</span>
-        </p>
-        <p>
-            Ventas Totales:
-            <span id="resumen-total-ventas">$0</span>
-        </p>
 
-        <p>
-            Ventas Totales en Efectivo:
-            <span id="resumen-total-efectivo">$0</span>
-        </p>
-        <p>
-            Ventas Totales en Transferencias:
-            <span id="resumen-total-transferencias">$0</span>
-        </p>
-
-        <p>
-            Ventas A Credito:
-            <span id="resumen-total-credito">$0</span>
-        </p>
-
-        
-        <p>
-            Gastos Totales:
-            <span id="resumen-total-gastos">$0</span>
-        </p>
-
-        <p>
-            Entregas de Caja:
-            <span id="resumen-total-entregas">$0</span>
-        </p>
-        <p>
-            Saldo Final:
-            <span id="resumen-saldo-final">$0</span>
-        </p>
-    </section> -->
     
 
     <section class="resumen">
@@ -307,10 +260,10 @@
         <h2>Cierre</h2>
 
         <div class="form-grid">
-            <label>Responsable de Cierre</label>
-            <input type="text" name="responsable-cierre" id="responsable-cierre">
-            <label>Observaciones</label>
-            <input type="text" name="observaciones" id="observaciones">
+
+            <input type="text" name="responsable-cierre" id="responsable-cierre" placeholder="Cierre realizado por"> 
+
+            <input type="text" name="observaciones" id="observaciones" placeholder="Observaciones">
         </div>
     </section>
 
