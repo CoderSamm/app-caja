@@ -40,7 +40,7 @@ const totalCreditos = document.getElementById('resumen-total-creditos');
 const botonAgregarVenta = document.getElementById('btn-agregar-venta');
 botonAgregarVenta.addEventListener('click', agregarVenta);
 
-function agregarVenta(){
+export function agregarVenta(){
 
     const remision = document.getElementById('input-remision').value;
     const detalle = document.getElementById('input-detalle').value

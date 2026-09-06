@@ -16,7 +16,7 @@ const totalGastos = document.getElementById('resumen-total-gastos');
 const botonAgregarGasto = document.getElementById('btn-agregar-gasto');
 botonAgregarGasto.addEventListener('click', agregarGasto)
 
-function agregarGasto(){
+export function agregarGasto(){
     const gastoNumero = document.getElementById('input-gasto-numero').value
     const detalleGasto = document.getElementById('input-detalle-gasto').value
     const totalGasto = Number(document.getElementById('input-total-gasto').value)

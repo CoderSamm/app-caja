@@ -141,6 +141,89 @@ button:hover{
     font-size:16px;
 }
 
+#notificacion-app{
+    position:fixed;
+    top:24px;
+    right:24px;
+    z-index:1000;
+    pointer-events:none;
+}
+
+.notificacion{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:280px;
+    max-width:calc(100vw - 48px);
+    overflow:hidden;
+    padding:16px 20px;
+    border-radius:12px;
+    color:white;
+    background:#166534;
+    box-shadow:0 14px 30px rgba(15,23,42,.22);
+    opacity:0;
+    transform:translateY(-24px) scale(.92);
+    transition:opacity .28s ease, transform .42s cubic-bezier(.2,.9,.25,1.25);
+}
+
+.notificacion-visible{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.notificacion-icono{
+    display:grid;
+    width:28px;
+    height:28px;
+    flex:0 0 28px;
+    place-items:center;
+    border:2px solid rgba(255,255,255,.75);
+    border-radius:50%;
+    font-size:18px;
+    font-weight:700;
+    animation:notificacion-pulso .7s ease-out;
+}
+
+.notificacion-mensaje{
+    font-weight:600;
+}
+
+.notificacion-progreso{
+    position:absolute;
+    right:0;
+    bottom:0;
+    left:0;
+    height:3px;
+    background:rgba(255,255,255,.75);
+    transform-origin:left;
+    animation:notificacion-tiempo 3.6s linear forwards;
+}
+
+@keyframes notificacion-pulso{
+    0%{transform:scale(.3); opacity:0}
+    70%{transform:scale(1.15); opacity:1}
+    100%{transform:scale(1)}
+}
+
+@keyframes notificacion-tiempo{
+    from{transform:scaleX(1)}
+    to{transform:scaleX(0)}
+}
+
+@media(max-width:600px){
+    #notificacion-app{
+        top:12px;
+        right:12px;
+        left:12px;
+    }
+
+    .notificacion{
+        min-width:0;
+        max-width:none;
+    }
+}
+
 /* ==========================================
    TABLAS
 ========================================== */

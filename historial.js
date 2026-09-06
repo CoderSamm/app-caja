@@ -7,7 +7,7 @@ console.log(historialCierres);
 
 
 
-historialCierres.forEach(cierre=>{
+historialCierres.forEach((cierre, indice)=>{
     console.log(cierre.fecha)
     //pintamos la tabla en nuestro html
 
@@ -18,26 +18,21 @@ historialCierres.forEach(cierre=>{
         <td>${cierre.responsableApertura}</td>
         <td>${cierre.responsableCierre}</td>
         <td>
-            <button class="btn-abrir" data-fecha="${cierre.fecha}">
+            <button class="btn-abrir" data-indice="${indice}">
                 Abrir
             </button>
         </td>
     </tr>`
 
     
-    const botonesAbrir = document.querySelectorAll('.btn-abrir');
-    console.log("BOTONES:", botonesAbrir.length);
+});
 
-    botonesAbrir.forEach(boton =>{
-
-        boton.addEventListener('click', ()=>{
+const botonesAbrir = document.querySelectorAll('.btn-abrir');
+botonesAbrir.forEach(boton => {
+    boton.addEventListener('click', ()=>{
             
-            const cierreSeleccionado =
-
-            historialCierres.find(
-                
-                cierre => cierre.fecha === boton.dataset.fecha
-            )
+            const indice = Number(boton.dataset.indice);
+            const cierreSeleccionado = historialCierres[indice];
 
             console.log(cierreSeleccionado);
 
@@ -45,6 +40,7 @@ historialCierres.forEach(cierre=>{
                 "CierreSeleccionado",
                 JSON.stringify(cierreSeleccionado)
             )
+            localStorage.setItem('CierreSeleccionadoIndice', String(indice));
 
             console.log(
                 localStorage.getItem('CierreSeleccionado')
@@ -52,7 +48,5 @@ historialCierres.forEach(cierre=>{
 
             window.location.href = 'index.html';
         });
-    })
-
 });
 

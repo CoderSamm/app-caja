@@ -1,24 +1,7 @@
 console.log("generar-acta cargado");
 
 
-import {
-    saldoInicial,
-    ventasAcumuladas,
-    ventasEfectivoAcumuladas,
-    ventasTransferenciasAcumuladas,
-    ventasCreditosAcumuladas,
-    ventas
-} from "./ventas.js";
-
-import {
-    gastosAcumulados,
-    gastos
-} from "./gastos.js";
-
-import {
-    entregasAcumuladas,
-    entregas
-} from "./entregas.js";
+import { mostrarNotificacion } from './notificaciones.js';
 
 
 //Conectamos el Boton generar acta
@@ -28,63 +11,49 @@ console.log(botonGenerarActa);
 console.log('CLICK FUNCIONA');
 
 function generarActa() {
-
-
-    //probando que aparezca el saldo inicial
-
     const saldoInicialFormulario = Number(
         document.getElementById('input-saldo-inicial').value
     );
 
-    console.log(
-        "SALDO FORMULARIO:",
-        saldoInicialFormulario
-    );
-
-    console.log("PASO 1");
-
-    // const consecutivo = document.getElementById('consecutivo').textContent;
-
-    // console.log("PASO 2", consecutivo);
-
     const fecha = document.getElementById('fecha').value;
-    console.log("PASO 3", fecha);
     const responsableApertura = document.getElementById('nombre-responsable').value;
-    console.log("PASO 4", responsableApertura);
     const responsableCierre = document.getElementById('responsable-cierre').value;
-    console.log("PASO 5", responsableCierre);
     const observaciones =  document.getElementById('observaciones').value;
-    console.log("PASO 6", observaciones);
+
+    const leerTabla = (selector, nombres, tiposNumericos = []) => {
+        return [...document.querySelectorAll(`${selector} tr`)].map(fila => {
+            const valores = [...fila.querySelectorAll('td')]
+                .slice(0, nombres.length)
+                .map(celda => celda.textContent.trim());
+
+            return nombres.reduce((registro, nombre, indice) => {
+                registro[nombre] = tiposNumericos.includes(nombre)
+                    ? Number(valores[indice])
+                    : valores[indice];
+                return registro;
+            }, {});
+        });
+    };
 
 
     const cierreCaja = {
 
-        // consecutivo,
         fecha,
-
         responsableApertura,
         responsableCierre,
         observaciones,
-
-        saldoInicial: saldoInicialFormulario, //la variable que importamos saldoInicial y la variable que creamos aqui dentro: saldoInicialFormulario
-
-        ventasAcumuladas,
-        ventasEfectivoAcumuladas,
-        ventasTransferenciasAcumuladas,
-        ventasCreditosAcumuladas,
-
-        gastosAcumulados,
-        entregasAcumuladas,
-
-        ventas,
-        gastos,
-        entregas
+        saldoInicial: saldoInicialFormulario,
+        ventas: leerTabla('#tbody-ventas', ['remision', 'detalle', 'totalRemision', 'formaPago', 'cliente'], ['totalRemision']),
+        gastos: leerTabla('#tbody-gastos', ['gastoNumero', 'detalleGasto', 'totalGasto', 'formaPagoGasto', 'proveedor', 'nombreReceptor'], ['totalGasto']),
+        entregas: leerTabla('#tbody-entregas', ['entregaNumero', 'detalleEntrega', 'totalEntrega', 'aprobador', 'receptor', 'horaEntrega'], ['totalEntrega'])
     };
 
     localStorage.setItem(
         "CierreCaja",
         JSON.stringify(cierreCaja)
     );
+
+    mostrarNotificacion('Acta generada correctamente');
 
     window.open(
         "./reportes/acta-cierre.html",

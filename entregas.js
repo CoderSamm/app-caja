@@ -16,7 +16,7 @@ const totalEntrega = document.getElementById('resumen-total-entregas');
 const botonAgregarEntregas = document.getElementById('btn-agregar-entrega');
 botonAgregarEntregas.addEventListener('click', agregarEntrega);
 
-function agregarEntrega(){
+export function agregarEntrega(){
     const entregaNumero = document.getElementById('input-entrega-numero').value
     const detalleEntrega = document.getElementById('input-detalle-entrega').value
     const totalEntrega = Number(document.getElementById('input-total-entrega').value)
