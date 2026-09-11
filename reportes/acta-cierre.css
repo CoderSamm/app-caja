@@ -25,25 +25,17 @@ body{
     padding:30px;
     display:flex;
     justify-content:center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color:#1f2937;
+    line-height:1.35;
 }
 
 .hoja{
-
-    width:900px;
-    min-height:1200px;
+    width:min(900px, 100%);
     background:white;
     padding:40px;
     border-radius:10px;
     box-shadow: 0 0 15px rgba(0,0,0,.2);
-}
-
-.hoja{
-    width: 900px;
-    min-height: 1200px;
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,.2);;
 }
 
 /* IMPRIMIR */
@@ -71,12 +63,12 @@ body{
 header {
     text-align: center;
     border-bottom: 3px solid #2563eb;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 header h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: #111827;
     letter-spacing: 1px;
@@ -92,15 +84,15 @@ header p {
 ========================== */
 
 section {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
 }
 
 section h2 {
     background: #f3f4f6;
     color: #111827;
     border-left: 5px solid #2563eb;
-    padding: 10px 12px;
-    margin-bottom: 15px;
+    padding: 7px 10px;
+    margin-bottom: 8px;
     font-size: 14px;
 }
 
@@ -110,7 +102,7 @@ section h2 {
 
 .datos-apertura p,
 .datos-cierre p {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .datos-apertura span,
@@ -125,7 +117,8 @@ section h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 6px;
+    table-layout: fixed;
 }
 
 thead {
@@ -134,7 +127,7 @@ thead {
 
 th {
     border: 1px solid #cbd5e1;
-    padding: 8px;
+    padding: 5px 4px;
     text-align: center;
     font-size: 12px;
     font-weight: 700;
@@ -142,8 +135,9 @@ th {
 
 td {
     border: 1px solid #cbd5e1;
-    padding: 8px;
-    font-size: 11px;
+    padding: 5px 4px;
+    font-size: 10px;
+    overflow-wrap: anywhere;
 }
 
 tbody tr:nth-child(even) {
@@ -171,14 +165,14 @@ tbody tr:hover {
 .resumen {
     border: 1px solid #d1d5db;
     border-radius: 8px;
-    padding: 15px;
+    padding: 8px 12px;
 }
 
 .resumen p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -201,8 +195,8 @@ tbody tr:hover {
     display: block;
     margin-top: 10px;
     border: 1px solid #d1d5db;
-    min-height: 100px;
-    padding: 12px;
+    min-height: 56px;
+    padding: 8px;
     border-radius: 6px;
     background: #fafafa;
 }
@@ -212,7 +206,7 @@ tbody tr:hover {
 ========================== */
 
 .firmas {
-    margin-top: 70px;
+    margin-top: 28px;
     display: flex;
     justify-content: space-between;
     gap: 80px;
@@ -238,13 +232,14 @@ tbody tr:hover {
 
 @page {
     size: A4;
-    margin: 12mm;
+    margin: 8mm;
 }
 
 @media print {
 
     body {
         padding: 0;
+        display:block;
         color-adjust: exact;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -272,5 +267,109 @@ tbody tr:hover {
 
     .firmas {
         page-break-inside: avoid;
+    }
+
+    .acciones-acta {
+        display:none;
+    }
+
+    .hoja {
+        width:100%;
+        padding:0;
+        border-radius:0;
+        box-shadow:none;
+        font-size:9px;
+    }
+
+    header {
+        padding-bottom:5px;
+        margin-bottom:8px;
+        border-bottom-width:2px;
+    }
+
+    header h1 {
+        font-size:16px;
+        margin-bottom:3px;
+    }
+
+    header p,
+    .datos-apertura p,
+    .datos-cierre p {
+        margin-bottom:2px;
+    }
+
+    section {
+        margin-bottom:7px;
+    }
+
+    section h2 {
+        padding:4px 7px;
+        margin-bottom:4px;
+        font-size:10px;
+    }
+
+    th,
+    td {
+        padding:2px 3px;
+        font-size:7.5px;
+        line-height:1.15;
+    }
+
+    table {
+        margin-top:3px;
+    }
+
+    .resumen {
+        padding:4px 8px;
+    }
+
+    .resumen p {
+        padding:2px 0;
+    }
+
+    .resumen p:last-child,
+    .resumen strong {
+        font-size:9px;
+    }
+
+    #acta-observaciones {
+        min-height:28px;
+        padding:4px;
+        margin-top:3px;
+    }
+
+    .firmas {
+        margin-top:12px;
+        gap:30px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding:10px;
+    }
+
+    .hoja {
+        padding:18px;
+    }
+
+    .hoja table {
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .hoja th,
+    .hoja td {
+        min-width:90px;
+    }
+
+    .hoja th:first-child,
+    .hoja td:first-child {
+        min-width:70px;
+    }
+
+    .firmas {
+        gap:20px;
     }
 }
