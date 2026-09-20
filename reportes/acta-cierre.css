@@ -278,7 +278,7 @@ tbody tr:hover {
         padding:0;
         border-radius:0;
         box-shadow:none;
-        font-size:9px;
+        font-size:10px;
     }
 
     header {
@@ -288,8 +288,8 @@ tbody tr:hover {
     }
 
     header h1 {
-        font-size:16px;
-        margin-bottom:3px;
+        font-size:20px;
+        margin-bottom:5px;
     }
 
     header p,
@@ -299,20 +299,20 @@ tbody tr:hover {
     }
 
     section {
-        margin-bottom:7px;
+        margin-bottom:10px;
     }
 
     section h2 {
-        padding:4px 7px;
-        margin-bottom:4px;
-        font-size:10px;
+        padding:5px 8px;
+        margin-bottom:6px;
+        font-size:12px;
     }
 
     th,
     td {
-        padding:2px 3px;
-        font-size:7.5px;
-        line-height:1.15;
+        padding:4px 5px;
+        font-size:9px;
+        line-height:1.2;
     }
 
     table {
@@ -320,27 +320,34 @@ tbody tr:hover {
     }
 
     .resumen {
-        padding:4px 8px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        column-gap:18px;
+        padding:7px 10px;
+    }
+
+    .resumen h2 {
+        grid-column:1 / -1;
     }
 
     .resumen p {
-        padding:2px 0;
+        padding:3px 0;
     }
 
     .resumen p:last-child,
     .resumen strong {
-        font-size:9px;
+        font-size:10px;
     }
 
     #acta-observaciones {
-        min-height:28px;
-        padding:4px;
-        margin-top:3px;
+        min-height:36px;
+        padding:6px;
+        margin-top:4px;
     }
 
     .firmas {
-        margin-top:12px;
-        gap:30px;
+        margin-top:20px;
+        gap:40px;
     }
 }
 

@@ -128,6 +128,7 @@ const totalEntregas = cierre.entregas.reduce(
 const saldoFinal = cierre.saldoInicial + totalVentasEnEfectivo - totalGastos - totalEntregas;
 
 //PINTAR EL RESUMEN O IMRIMIR RESUMEN EN HTML
+document.getElementById('resumen-acta-saldo-inicial').textContent = formatoMoneda(cierre.saldoInicial);
 document.getElementById("acta-total-ventas").textContent = formatoMoneda(totalVentas);
 document.getElementById("acta-total-efectivo").textContent = formatoMoneda(totalVentasEnEfectivo);
 document.getElementById("acta-total-transferencias").textContent = formatoMoneda(totalVentasEnTransferencias);
