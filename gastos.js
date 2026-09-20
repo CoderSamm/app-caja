@@ -211,3 +211,11 @@ export function agregarGasto(){
    actualizarResumen();
 
 }
+
+export function limpiarGastos(){
+    gastos.length = 0;
+    gastosAcumulados = 0;
+    tbodyGastos.innerHTML = '';
+    tablaTotalGastos.textContent = '$0';
+    actualizarResumen();
+}

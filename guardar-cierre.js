@@ -4,17 +4,20 @@ import {
     ventasAcumuladas,
     ventasEfectivoAcumuladas,
     ventasTransferenciasAcumuladas,
-    ventasCreditosAcumuladas
+    ventasCreditosAcumuladas,
+    limpiarVentas
 } from "./ventas.js"
 
 import {
     gastos,
-    gastosAcumulados
+    gastosAcumulados,
+    limpiarGastos
 } from "./gastos.js"
 
 import{
     entregas,
-    entregasAcumuladas
+    entregasAcumuladas,
+    limpiarEntregas
 } from "./entregas.js"
 
 import { mostrarNotificacion } from './notificaciones.js';
@@ -90,7 +93,7 @@ function guardarCierre(){
 const botonEliminarCierre = document.getElementById('btn-eliminar-cierre');
 const indiceSeleccionado = Number(localStorage.getItem('CierreSeleccionadoIndice'));
 if (botonEliminarCierre && Number.isInteger(indiceSeleccionado) && indiceSeleccionado >= 0) {
-    botonEliminarCierre.hidden = false;
+    botonEliminarCierre.disabled = false;
     botonEliminarCierre.addEventListener('click', () => {
         if (!confirm('¿Eliminar este cierre del historial?')) return;
 
@@ -102,5 +105,27 @@ if (botonEliminarCierre && Number.isInteger(indiceSeleccionado) && indiceSelecci
         window.location.href = 'historial.html';
     });
 }
+
+const botonLimpiarCierre = document.getElementById('btn-limpiar-cierre');
+botonLimpiarCierre.addEventListener('click', () => {
+    limpiarVentas();
+    limpiarGastos();
+    limpiarEntregas();
+
+    document.querySelectorAll('input').forEach(input => {
+        input.value = '';
+    });
+    document.getElementById('input-saldo-inicial').dispatchEvent(
+        new Event('input', { bubbles: true })
+    );
+    document.querySelectorAll('select').forEach(select => {
+        select.selectedIndex = 0;
+    });
+
+    localStorage.removeItem('CierreSeleccionado');
+    localStorage.removeItem('CierreSeleccionadoIndice');
+    botonEliminarCierre.disabled = true;
+    mostrarNotificacion('Formulario limpiado correctamente');
+});
 
 

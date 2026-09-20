@@ -211,3 +211,11 @@ export function agregarEntrega(){
 
     actualizarResumen()
 }
+
+export function limpiarEntregas(){
+    entregas.length = 0;
+    entregasAcumuladas = 0;
+    tbodyEntregas.innerHTML = '';
+    tablaTotalEntregas.textContent = '$0';
+    actualizarResumen();
+}

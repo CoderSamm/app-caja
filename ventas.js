@@ -316,6 +316,17 @@ export function agregarVenta(){
     document.getElementById('input-cliente').value = '';
 }
 
+export function limpiarVentas(){
+    ventas.length = 0;
+    ventasAcumuladas = 0;
+    ventasEfectivoAcumuladas = 0;
+    ventasTransferenciasAcumuladas = 0;
+    ventasCreditosAcumuladas = 0;
+    tbodyVentas.innerHTML = '';
+    tablaTotalVentas.textContent = '$0';
+    actualizarResumen();
+}
+
 
 
 
