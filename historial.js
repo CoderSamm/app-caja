@@ -1,52 +1,45 @@
-const historialCierres = JSON.parse(
-    localStorage.getItem('historialCierres') //Busca en el navegador lo que guardamos. Convierte ese texto nuevamente en un arreglo de JavaScript.
-) || [];
-
 const tbodyHistorial = document.getElementById('tbody-historial')
-console.log(historialCierres);
+const escaparHtml = valor => String(valor ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 
+async function cargarHistorial() {
+    try {
+        const respuesta = await fetch('/api/cierres');
+        if (!respuesta.ok) throw new Error('No se pudo cargar el historial.');
 
+        const historialCierres = await respuesta.json();
+        tbodyHistorial.innerHTML = historialCierres.map(cierre => `
+            <tr>
+                <td>${escaparHtml(cierre.fecha)}</td>
+                <td>${escaparHtml(cierre.responsableApertura)}</td>
+                <td>${escaparHtml(cierre.responsableCierre)}</td>
+                <td>
+                    <button class="btn-abrir" data-id="${escaparHtml(cierre.id)}">
+                        Abrir
+                    </button>
+                </td>
+            </tr>`).join('');
 
-historialCierres.forEach((cierre, indice)=>{
-    console.log(cierre.fecha)
-    //pintamos la tabla en nuestro html
+        document.querySelectorAll('.btn-abrir').forEach(boton => {
+            boton.addEventListener('click', () => {
+                const cierreSeleccionado = historialCierres.find(
+                    cierre => cierre.id === boton.dataset.id
+                );
 
-    tbodyHistorial.innerHTML += `
-    
-    <tr>
-        <td>${cierre.fecha}</td>
-        <td>${cierre.responsableApertura}</td>
-        <td>${cierre.responsableCierre}</td>
-        <td>
-            <button class="btn-abrir" data-indice="${indice}">
-                Abrir
-            </button>
-        </td>
-    </tr>`
-
-    
-});
-
-const botonesAbrir = document.querySelectorAll('.btn-abrir');
-botonesAbrir.forEach(boton => {
-    boton.addEventListener('click', ()=>{
-            
-            const indice = Number(boton.dataset.indice);
-            const cierreSeleccionado = historialCierres[indice];
-
-            console.log(cierreSeleccionado);
-
-            localStorage.setItem(
-                "CierreSeleccionado",
-                JSON.stringify(cierreSeleccionado)
-            )
-            localStorage.setItem('CierreSeleccionadoIndice', String(indice));
-
-            console.log(
-                localStorage.getItem('CierreSeleccionado')
-            )
-
-            window.location.href = 'index.html';
+                localStorage.setItem('CierreSeleccionado', JSON.stringify(cierreSeleccionado));
+                localStorage.setItem('CierreSeleccionadoId', cierreSeleccionado.id);
+                window.location.href = 'index.html';
+            });
         });
-});
+    } catch (error) {
+        console.error(error);
+        tbodyHistorial.innerHTML = '<tr><td colspan="4">No se pudo cargar el historial.</td></tr>';
+    }
+}
+
+cargarHistorial();
 

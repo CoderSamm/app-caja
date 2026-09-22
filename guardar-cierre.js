@@ -27,11 +27,8 @@ import { mostrarNotificacion } from './notificaciones.js';
 //conectamos el boton
 
 const botonGuardarCierre = document.getElementById('btn-guardar-cierre')
-botonGuardarCierre.addEventListener('click',
-    guardarCierre
-)
 
-function guardarCierre(){
+async function guardarCierre(){
 
     console.log('Guardando cierre')
 
@@ -68,41 +65,52 @@ function guardarCierre(){
         entregas: leerTabla('#tbody-entregas', ['entregaNumero', 'detalleEntrega', 'totalEntrega', 'aprobador', 'receptor', 'horaEntrega'], ['totalEntrega'])
     }
 
-    const historialCierres = JSON.parse( 
-        localStorage.getItem('historialCierres')
-    ) || [];
+    const id = localStorage.getItem('CierreSeleccionadoId');
+    const respuesta = await fetch(id ? `/api/cierres?id=${encodeURIComponent(id)}` : '/api/cierres', {
+        method: id ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cierreCaja)
+    });
 
-    const indiceSeleccionado = Number(localStorage.getItem('CierreSeleccionadoIndice'));
-    if (Number.isInteger(indiceSeleccionado) && indiceSeleccionado >= 0 && indiceSeleccionado < historialCierres.length) {
-        historialCierres[indiceSeleccionado] = cierreCaja;
-    } else {
-        historialCierres.push(cierreCaja);
+    if (!respuesta.ok) {
+        const detalle = await respuesta.json().catch(() => ({}));
+        throw new Error(detalle.error || 'No se pudo guardar el cierre.');
     }
-   
 
-    localStorage.setItem('historialCierres',
-        JSON.stringify(historialCierres)
-    );
-
-    console.log(historialCierres);
     localStorage.removeItem('CierreSeleccionado');
-    localStorage.removeItem('CierreSeleccionadoIndice');
+    localStorage.removeItem('CierreSeleccionadoId');
     mostrarNotificacion('Cierre guardado correctamente');
 }
 
+botonGuardarCierre.addEventListener('click', async () => {
+    try {
+        await guardarCierre();
+    } catch (error) {
+        console.error(error);
+        mostrarNotificacion(error.message, 'error');
+    }
+});
+
 const botonEliminarCierre = document.getElementById('btn-eliminar-cierre');
-const indiceSeleccionado = Number(localStorage.getItem('CierreSeleccionadoIndice'));
-if (botonEliminarCierre && Number.isInteger(indiceSeleccionado) && indiceSeleccionado >= 0) {
+const idSeleccionado = localStorage.getItem('CierreSeleccionadoId');
+if (botonEliminarCierre && idSeleccionado) {
     botonEliminarCierre.disabled = false;
-    botonEliminarCierre.addEventListener('click', () => {
+    botonEliminarCierre.addEventListener('click', async () => {
         if (!confirm('¿Eliminar este cierre del historial?')) return;
 
-        const historialCierres = JSON.parse(localStorage.getItem('historialCierres')) || [];
-        historialCierres.splice(indiceSeleccionado, 1);
-        localStorage.setItem('historialCierres', JSON.stringify(historialCierres));
-        localStorage.removeItem('CierreSeleccionado');
-        localStorage.removeItem('CierreSeleccionadoIndice');
-        window.location.href = 'historial.html';
+        try {
+            const respuesta = await fetch(`/api/cierres?id=${encodeURIComponent(idSeleccionado)}`, {
+                method: 'DELETE'
+            });
+            if (!respuesta.ok) throw new Error('No se pudo eliminar el cierre.');
+
+            localStorage.removeItem('CierreSeleccionado');
+            localStorage.removeItem('CierreSeleccionadoId');
+            window.location.href = 'historial.html';
+        } catch (error) {
+            console.error(error);
+            mostrarNotificacion(error.message, 'error');
+        }
     });
 }
 
@@ -123,7 +131,7 @@ botonLimpiarCierre.addEventListener('click', () => {
     });
 
     localStorage.removeItem('CierreSeleccionado');
-    localStorage.removeItem('CierreSeleccionadoIndice');
+    localStorage.removeItem('CierreSeleccionadoId');
     botonEliminarCierre.disabled = true;
     mostrarNotificacion('Formulario limpiado correctamente');
 });
